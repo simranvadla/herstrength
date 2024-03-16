@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://img.freepik.com/free-photo/top-view-hands-assembling-advent-wreath_23-2150820764.jpg?size=626&ext=jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background: linear-gradient(to bottom right, #69d7ff, #ffffff);*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+ 
+  .login-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .logo img {
+    max-width: 100px;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+<div class="login-container">
+  <div class="logo">
+    <img src="wep-logo.png" alt="Logo">
+  </div>
+  <h2>Login</h2>
+  <form id="loginForm" onsubmit="return validateForm()">
+    <input type="text" id="username" name="username" placeholder="Username">
+    <input type="password" id="password" name="password" placeholder="Password">
+    <div id="error" class="error-message"></div>
+    <input type="submit" value="Login">
+  </form>
+  <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+</div>
+
+<script>
+  function validateForm() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let error = document.getElementById("error");
+
+    error.innerHTML = "";
+
+    if (username.trim() === "") {
+      error.innerHTML = "Please enter your username.";
+      return false;
+    }
+
+    if (password.trim() === "") {
+      error.innerHTML = "Please enter your password.";
+      return false;
+    }
+   let users = JSON.parse(localStorage.getItem("users")) || [];
+    let validUser = users.find(function(user) {
+      return user.username === username && user.password === password;
+    });
+
+    if (!validUser) {
+      error.innerHTML = "Invalid username or password.";
+      return false;
+    }
+
+    alert("Login successful!");
+    return true;
+  }
+</script>
+</body>
+</html>

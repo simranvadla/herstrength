@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://img.freepik.com/free-photo/top-view-hands-assembling-advent-wreath_23-2150820764.jpg?size=626&ext=jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+
+  .signup-container {
+    width: 400px;
+    padding: 20px;
+    margin:70px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .logo img {
+    max-width: 100px;
+    height: auto;
+  }
+
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .login-link a {
+    color: #4caf50;
+    text-decoration: none;
+  }
+
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div class="signup-container">
+  <div class="logo">
+    <img src="wep-logo.png" alt="Logo">
+  </div>
+  <h2>Sign Up</h2>
+  <form id="signupForm" onsubmit="return validateForm()">
+    <input type="text" id="firstname" name="firstname" placeholder="First Name" title="Enter first name">
+    <input type="text" id="lastname" name="lastname" placeholder="Last Name"  title="Enter last name">
+    <select id="gender" name="gender" title="Select Gender">
+      <option value="" disabled selected>Select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <input type="text" id="username" name="username" placeholder="Username (@gmail.com)" title="Enter username">
+    <input type="password" id="password" name="password" placeholder="Password" title="Enter password">
+    <div id="error" class="error-message"></div>
+    <input type="checkbox"<p>Accept the <a href="https://termly.io/our-privacy-policy/?_gl=1*16v63ol*_gcl_au*OTYyNTMwMDIyLjE3MDk4MjUxMDI.">privacy policy</a> & <a href="https://termly.io/our-terms-of-use/?_gl=1*6nb64n*_gcl_au*OTYyNTMwMDIyLjE3MDk4MjUxMDI.">terms of use</a></p> 
+    <input type="submit" value="Sign Up">
+  </form>
+  <div class="login-link">
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+</div>
+
+<script>
+  function validateForm() {
+    var firstname = document.getElementById("firstname").value;
+    var lastname = document.getElementById("lastname").value;
+    var gender = document.getElementById("gender").value;
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var error = document.getElementById("error");
+
+    error.innerHTML = "";
+
+    if (firstname.trim() === "") {
+      error.innerHTML = "Please enter your first name.";
+      return false;
+    }
+
+    if (lastname.trim() === "") {
+      error.innerHTML = "Please enter your last name.";
+      return false;
+    }
+
+    if (gender.trim() === "") {
+      error.innerHTML = "Please select your gender.";
+      return false;
+    }
+
+    if (username.trim() === "") {
+      error.innerHTML = "Please enter a username.";
+      return false;
+    }
+
+    if (password.trim() === "") {
+      error.innerHTML = "Please enter a password.";
+      return false;
+    }
+
+    let user = {
+      firstname: firstname,
+      lastname: lastname,
+      gender: gender,
+      username: username,
+      password: password
+    };
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Sign up successful! You can now login.");
+    return true;
+  }
+</script>
+</body>
+</html>
