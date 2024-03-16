@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/herstrength/static/css/main.f855e6bc.css",
+    "main.js": "/herstrength/static/js/main.efaefbef.js",
+    "static/js/453.f03c7281.chunk.js": "/herstrength/static/js/453.f03c7281.chunk.js",
+    "static/media/logo.svg": "/herstrength/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/herstrength/index.html",
+    "main.f855e6bc.css.map": "/herstrength/static/css/main.f855e6bc.css.map",
+    "main.efaefbef.js.map": "/herstrength/static/js/main.efaefbef.js.map",
+    "453.f03c7281.chunk.js.map": "/herstrength/static/js/453.f03c7281.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.efaefbef.js"
+  ]
+}
